@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+html,
+body {
+  background-color: rgb(18, 18, 18);
+  height: 100%;
+  color: #ffffff;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%
+}
+
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.light {
+  background-color: rgb(25, 25, 25);
+}
+
+.light-input {
+  color: #fff !important;
+  background-color: rgb(36, 36, 36) !important;
+  border: none;
+}
+
+label {
+  color: #b7b7b7 !important;
+}
+
+button,
+a {
+  color: #fff !important;
+  background-color: rgb(36, 36, 36) !important;
+  border-color: rgb(36, 36, 36) !important;
+  text-decoration: none;
+}
+button,
+a:hover {
+  color: #fff !important;
+  background-color: rgb(25, 25, 25) !important;
+  border-color: rgb(25, 25, 25) !important;
+  text-decoration: none;
+}
+
+textarea {
+  font-size: small;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(25, 25, 25);
+  border: 0 none #fff;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(36, 36, 36) !important;
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgb(36, 36, 36) !important;
+}
+::-webkit-scrollbar-track {
+  background: rgb(18, 18, 18) !important;
+  border: 0 none #fff;
+  border-radius: 0;
+}
+::-webkit-scrollbar-track:hover {
+  background: #222;
+}
+::-webkit-scrollbar-track:active {
+  background: #222;
+}
+::-webkit-scrollbar-corner {
+  background: rgb(18, 18, 18) !important;
+}
