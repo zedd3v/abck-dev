@@ -124,10 +124,39 @@ var _cf = _cf || [],
             var d = Math.random(),
                 k = bmak.pi(1e3 * d / 2),
                 s = d + "";
-            return s = s.slice(0, 11) + k, bmak.get_browser(), bmak.bc(), bmak.bmisc(), t + ",uaend," + bmak.xagg + "," + bmak.psub + "," + bmak.lang + "," + bmak.prod + "," + bmak.plen + "," + bmak.pen + "," + bmak.wen + "," + bmak.den + "," + bmak.z1 + "," + bmak.d3 + "," + n + "," + o + "," + m + "," + r + "," + i + "," + c + "," + b + "," + bmak.bd() + "," + a + "," + s + "," + e + ",loc:" + bmak.loc
+            return s = s.slice(0, 11) + k,
+                    bmak.get_browser(),
+                    bmak.bc(),
+                    bmak.bmisc(),
+                    t + ",uaend," +
+                    bmak.xagg + "," +
+                    bmak.psub + "," +
+                    bmak.lang + "," + 
+                    bmak.prod + "," + 
+                    bmak.plen + "," + 
+                    bmak.pen + "," + 
+                    bmak.wen + "," + 
+                    bmak.den + "," + 
+                    bmak.z1 + "," + 
+                    bmak.d3 + "," +
+                    n + "," +
+                    o + "," +
+                    m + "," +
+                    r + "," + 
+                    i + "," +
+                    c + "," +
+                    b + "," +
+                    bmak.bd() + "," +
+                    a + "," +
+                    s + "," +
+                    e + ",loc:" +
+                    bmak.loc
         },
         get_browser: function () {
-            navigator.productSub && (bmak.psub = navigator.productSub), navigator.language && (bmak.lang = navigator.language), navigator.product && (bmak.prod = navigator.product), bmak.plen = void 0 !== navigator.plugins ? navigator.plugins.length : -1
+            navigator.productSub && (bmak.psub = navigator.productSub),
+            navigator.language && (bmak.lang = navigator.language),
+            navigator.product && (bmak.prod = navigator.product),
+            bmak.plen = void 0 !== navigator.plugins ? navigator.plugins.length : -1
         },
         bc: function () {
             var t = window.addEventListener ? 1 : 0,
@@ -605,7 +634,36 @@ var _cf = _cf || [],
                     _ = bmak.get_cf_date() - bmak.start_ts,
                     f = bmak.pi(bmak.d2 / 6),
                     p = bmak.fas(),
-                    v = [bmak.ke_vel + 1, bmak.me_vel + 32, bmak.te_vel + 32, bmak.doe_vel, bmak.dme_vel, bmak.pe_vel, k, a, bmak.init_time, bmak.start_ts, bmak.fpcf.td, bmak.d2, bmak.ke_cnt, bmak.me_cnt, f, bmak.pe_cnt, bmak.te_cnt, _, bmak.ta, bmak.n_ck, e, bmak.ab(e), bmak.fpcf.rVal, bmak.fpcf.rCFP, p, l, u[0], u[1]],
+                    v = [
+                      bmak.ke_vel + 1,
+                      bmak.me_vel + 32,
+                      bmak.te_vel + 32,
+                      bmak.doe_vel,
+                      bmak.dme_vel,
+                      bmak.pe_vel,
+                      k,
+                      a,
+                      bmak.init_time,
+                      bmak.start_ts,
+                      bmak.fpcf.td,
+                      bmak.d2,
+                      bmak.ke_cnt,
+                      bmak.me_cnt,
+                      f,
+                      bmak.pe_cnt,
+                      bmak.te_cnt,
+                      _,
+                      bmak.ta,
+                      bmak.n_ck,
+                      e,
+                      bmak.ab(e),
+                      bmak.fpcf.rVal,
+                      bmak.fpcf.rCFP,
+                      p,
+                      l,
+                      u[0],
+                      u[1]
+                    ],
                     h = v.join(","),
                     g = "" + bmak.ab(bmak.fpcf.fpValstr);
                 bmak.np();
@@ -1002,7 +1060,22 @@ if (function (t) {
                 m = navigator.doNotTrack ? navigator.doNotTrack : -1,
                 r = "default";
             r = bmak.runFonts ? bmak.altFonts ? a.fonts_optm() : a.fonts() : "dis";
-            return [a.canvas("<@nv45. F1n63r,Pr1n71n6!"), a.canvas("m,Ev!xV67BaU> eh2m<f3AG3@"), r, a.pluginInfo(), a.sessionStorageKey(), a.localStorageKey(), a.indexedDbKey(), a.timezoneOffsetKey(), a.webrtcKey(), t, e, n, o, m].join(";")
+            return [
+              a.canvas("<@nv45. F1n63r,Pr1n71n6!"),
+              a.canvas("m,Ev!xV67BaU> eh2m<f3AG3@"),
+              r,
+              a.pluginInfo(),
+              a.sessionStorageKey(),
+              a.localStorageKey(),
+              a.indexedDbKey(),
+              a.timezoneOffsetKey(),
+              a.webrtcKey(),
+              t,
+              e,
+              n,
+              o,
+              m
+            ].join(";")
         }, a.PLUGINS = ["WebEx64 General Plugin Container", "YouTube Plug-in", "Java Applet Plug-in", "Shockwave Flash", "iPhotoPhotocast", "SharePoint Browser Plug-in", "Chrome Remote Desktop Viewer", "Chrome PDF Viewer", "Native Client", "Unity Player", "WebKit-integrierte PDF", "QuickTime Plug-in", "RealPlayer Version Plugin", "RealPlayer\(tm\) G2 LiveConnect-Enabled Plug-In \(32-bit\)", "Mozilla Default Plug-in", "Adobe Acrobat", "AdobeAAMDetect", "Google Earth Plug-in", "Java Plug-in 2 for NPAPI Browsers", "Widevine Content Decryption Module", "Microsoft Office Live Plug-in", "Windows Media Player Plug-in Dynamic Link Library", "Google Talk Plugin Video Renderer", "Edge PDF Viewer", "Shockwave for Director", "Default Browser Helper", "Silverlight Plug-In"], a.pluginInfo = function () {
             if (void 0 === navigator.plugins) return null;
             for (var t = a.PLUGINS.length, e = "", n = 0; n < t; n++) {

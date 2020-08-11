@@ -18,7 +18,7 @@ export default ({ logo }: { logo: string }): JSX.Element => {
         </Link>
       </Col>
       <Col className="text-center col-1 d-flex align-items-center justify-content-center">
-        <img src={logo} alt="snowflake" width="32" />
+        <img src={logo} alt="logo" width="32" />
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
         <Link className="w-100 btn" to="/package">
@@ -26,11 +26,7 @@ export default ({ logo }: { logo: string }): JSX.Element => {
         </Link>
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
-        <Button
-          href="https://lelinhtinh.github.io/de4js/"
-          target="_blank"
-          className="w-100"
-        >
+        <Button href="https://lelinhtinh.github.io/de4js/" target="_blank" className="w-100">
           Deobfuscator
         </Button>
       </Col>

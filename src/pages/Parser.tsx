@@ -35,9 +35,7 @@ export default (): JSX.Element => {
             rows={6}
             placeholder="First Sensor"
             className="light-input"
-            onChange={(e): void =>
-              parseSensorAndOuputResult('firstSensor', e.target.value)
-            }
+            onChange={(e): void => parseSensorAndOuputResult('firstSensor', e.target.value)}
           />
         </Col>
         <Col className="h-100 text-center justify-content-center align-items-center d-flex flex-column">
@@ -46,9 +44,7 @@ export default (): JSX.Element => {
             rows={6}
             placeholder="Second Sensor"
             className="light-input"
-            onChange={(e): void =>
-              parseSensorAndOuputResult('secondSensor', e.target.value)
-            }
+            onChange={(e): void => parseSensorAndOuputResult('secondSensor', e.target.value)}
           />
         </Col>
       </Row>
@@ -56,10 +52,7 @@ export default (): JSX.Element => {
       {sensors.firstSensor ? (
         <Row className="align-items-center justify-content-center w-100 mb-4 rounded">
           <Col className="h-100 light justify-content-center align-items-center p-4 d-flex flex-column rounded">
-            <ParseOutput
-              title="First Sensor Data"
-              elements={sensors.firstSensor}
-            />
+            <ParseOutput title="First Sensor Data" elements={sensors.firstSensor} />
           </Col>
         </Row>
       ) : null}
@@ -67,10 +60,7 @@ export default (): JSX.Element => {
       {sensors.secondSensor ? (
         <Row className="align-items-center justify-content-center w-100 mb-4 rounded">
           <Col className="h-100 light justify-content-center align-items-center p-4 d-flex flex-column rounded">
-            <ParseOutput
-              title="Second Sensor Data"
-              elements={sensors.secondSensor}
-            />
+            <ParseOutput title="Second Sensor Data" elements={sensors.secondSensor} />
           </Col>
         </Row>
       ) : null}
@@ -78,10 +68,7 @@ export default (): JSX.Element => {
       {sensors.firstSensor && sensors.secondSensor ? (
         <Row className="align-items-center justify-content-center w-100 mb-4 rounded">
           <Col className="h-100 light p-4 rounded">
-            <CompareSensors
-              firstSensor={sensors.firstSensor}
-              secondSensor={sensors.secondSensor}
-            />
+            <CompareSensors firstSensor={sensors.firstSensor} secondSensor={sensors.secondSensor} />
           </Col>
         </Row>
       ) : null}

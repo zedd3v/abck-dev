@@ -8,11 +8,7 @@ export default (): JSX.Element => {
       <Col className="text-center d-flex align-items-center justify-content-center flex-column">
         <h6>
           Current Akamai Version: 1.62 | Made by&nbsp;
-          <a
-            href="https://github.com/zedd3v"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+          <a href="https://github.com/zedd3v" rel="noopener noreferrer" target="_blank">
             github.com/zedd3v
           </a>
         </h6>

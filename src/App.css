@@ -15,7 +15,7 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%
+  width: 100%;
 }
 
 ::-webkit-input-placeholder,
@@ -36,6 +36,7 @@ body {
 }
 
 label {
+  font-size: 0.85rem;
   color: #b7b7b7 !important;
 }
 
@@ -91,4 +92,13 @@ textarea {
 }
 ::-webkit-scrollbar-corner {
   background: rgb(18, 18, 18) !important;
+}
+
+.col-5 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 20%;
+  float: left;
 }
