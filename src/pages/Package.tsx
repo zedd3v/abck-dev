@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default (): JSX.Element => {
   const code = `
@@ -51,15 +51,15 @@ Abck.od("0a46G5m17Vrp4o4c", "afSbep8yjnZUjq3aL010jO15Sawj2VZfdYK8uY90uxq");
           <p className="mb-5">Abck is a library that makes generating akamai cookies easier.</p>
           <h3 className="mb-0">Installation</h3>
           <hr />
-          <SyntaxHighlighter className="w-100" language="bash" style={vscDarkPlus}>
+          <SyntaxHighlighter className="w-100" language="bash" style={atomDark}>
             npm install abck
           </SyntaxHighlighter>
-          <SyntaxHighlighter className="w-100 mb-5" language="bash" style={vscDarkPlus}>
+          <SyntaxHighlighter className="w-100 mb-5" language="bash" style={atomDark}>
             yarn add abck
           </SyntaxHighlighter>
           <h3 className="mb-0">Usage</h3>
           <hr />
-          <SyntaxHighlighter className="w-100 mb-5" language="javascript" style={vscDarkPlus}>
+          <SyntaxHighlighter className="w-100 mb-5" language="javascript" style={atomDark}>
             {code}
           </SyntaxHighlighter>
           <h3 className="mb-0">Contributing</h3>
