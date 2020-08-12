@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
-import { ParsedSensor, CamelCaseToSentenceCase } from '../functions';
+import { ParsedSensor } from '../functions';
 
 export default ({ title, elements }: { title: string; elements: ParsedSensor }): JSX.Element => {
   return (
