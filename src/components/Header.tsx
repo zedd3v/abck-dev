@@ -13,8 +13,8 @@ export default ({ logo }: { logo: string }): JSX.Element => {
         </Link>
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
-        <Link className="w-100 btn" to="/definitions">
-          Definitions
+        <Link className="w-100 btn" to="/api">
+          Api
         </Link>
       </Col>
       <Col className="text-center col-1 d-flex align-items-center justify-content-center">
