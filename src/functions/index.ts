@@ -528,13 +528,8 @@ function recursiveSplitByDivider(sensor: string, divider: Divider): ParsedSensor
       secondSplit = firstSplit[1].split('-1,2,-94,');
     }
   } else {
-    if (endDivider) {
-      firstSplit = sensor.split(endDivider);
-      if (firstSplit.length < 2) return null;
-    } else {
-      firstSplit = sensor.split(divider.divider);
-      if (firstSplit.length < 2) return null;
-    }
+    firstSplit = sensor.split(endDivider || divider.divider);
+    if (firstSplit.length < 2) return null;
 
     secondSplit = firstSplit;
   }
@@ -545,6 +540,7 @@ function recursiveSplitByDivider(sensor: string, divider: Divider): ParsedSensor
 
   if (children && children.length > 0) {
     children.forEach((child) => {
+      if (value.length < 3) return;
       const childParsedSensor = recursiveSplitByDivider(value, child);
       if (childParsedSensor) {
         finalParsedSensor = {
@@ -572,14 +568,24 @@ function recursiveSplitByDivider(sensor: string, divider: Divider): ParsedSensor
 }
 
 export function ParseSensor(sensor: string): ParsedSensor | null {
-  let parsedSensor: ParsedSensor = {};
+  try {
+    let parsedSensor: ParsedSensor = {};
 
-  dividers.forEach((d) => {
-    const values = recursiveSplitByDivider(sensor, d);
-    parsedSensor = { ...parsedSensor, ...values };
-  });
+    dividers.forEach((d) => {
+      const values = recursiveSplitByDivider(sensor, d);
+      parsedSensor = { ...parsedSensor, ...values };
+    });
 
-  return Object.keys(parsedSensor).length === 0 ? null : parsedSensor;
+    return Object.keys(parsedSensor).length === 0 ? null : parsedSensor;
+  } catch (e) {
+    return (
+      // eslint-disable-next-line no-console
+      console.error(e),
+      // eslint-disable-next-line no-alert
+      alert('An error occured, recheck your sensor. (More info in the console)'),
+      null
+    );
+  }
 }
 
 export const CamelCaseToSentenceCase = (camelCaseString: string): string => {
