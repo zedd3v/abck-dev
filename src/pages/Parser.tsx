@@ -20,10 +20,27 @@ export default (): JSX.Element => {
     sensor: string
   ): void => {
     if (!['firstSensor', 'secondSensor'].includes(sensorIndex)) return;
+
+    const switchTrue = (document.getElementById('switchTrue') as HTMLInputElement).checked;
+    const switchFalse = (document.getElementById('switchFalse') as HTMLInputElement).checked;
+
+    const detailed = !!(switchTrue && !switchFalse);
+
     setSensors({
       ...sensors,
-      [sensorIndex]: ParseSensor(sensor),
+      [sensorIndex]: ParseSensor(sensor, detailed),
     });
+  };
+
+  const updateBothSensors = (): void => {
+    parseSensorAndOuputResult(
+      'firstSensor',
+      (document.getElementById('firstSensorTextarea') as HTMLTextAreaElement).value
+    );
+    parseSensorAndOuputResult(
+      'secondSensor',
+      (document.getElementById('secondSensorTextarea') as HTMLTextAreaElement).value
+    );
   };
 
   return (
@@ -33,15 +50,37 @@ export default (): JSX.Element => {
           <FormControl
             as="textarea"
             rows={6}
+            id="firstSensorTextarea"
             placeholder="First Sensor"
             className="light-input"
             onChange={(e): void => parseSensorAndOuputResult('firstSensor', e.target.value)}
           />
         </Col>
+        <div className="toggle-switch-container">
+          <div className="toggle-switch switch-vertical">
+            <input
+              id="switchTrue"
+              type="radio"
+              name="switch"
+              onClick={(): void => updateBothSensors()}
+              defaultChecked
+            />
+            <input
+              id="switchFalse"
+              type="radio"
+              name="switch"
+              onClick={(): void => updateBothSensors()}
+            />
+            <span className="toggle-outside">
+              <span className="toggle-inside" />
+            </span>
+          </div>
+        </div>
         <Col className="h-100 text-center justify-content-center align-items-center d-flex flex-column">
           <FormControl
             as="textarea"
             rows={6}
+            id="secondSensorTextarea"
             placeholder="Second Sensor"
             className="light-input"
             onChange={(e): void => parseSensorAndOuputResult('secondSensor', e.target.value)}

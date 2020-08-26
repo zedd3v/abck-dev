@@ -102,3 +102,109 @@ textarea {
   width: 20%;
   float: left;
 }
+
+.toggle-switch-container {
+  align-content: center;
+  padding: 0.5rem;
+}
+
+.toggle-switch {
+  margin: 0;
+}
+
+.toggle-switch {
+  width: 10px;
+  position: relative;
+}
+
+.toggle-switch input {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.toggle-switch input:checked {
+  z-index: 1;
+}
+
+.toggle-switch input:checked + label {
+  opacity: 1;
+  cursor: default;
+}
+
+.toggle-switch input:not(:checked) + label:hover {
+  opacity: 0.5;
+}
+
+.toggle-switch label {
+  color: #fff;
+  opacity: 0.33;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.toggle-switch .toggle-outside {
+  height: 100%;
+  border-radius: 17px;
+  padding: 11px;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.toggle-switch .toggle-inside {
+  border-radius: 50%;
+  background: #464646;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+.switch-vertical {
+  background-color: #00f;
+  width: 0px;
+  height: 60px;
+  margin-left: 27px;
+}
+
+.switch-vertical input {
+  height: 100%;
+  width: 60px;
+  right: 0;
+  margin: 0;
+}
+
+.switch-vertical label {
+  font-size: 15px;
+  line-height: 30px;
+  display: block;
+  width: 80px;
+  height: 50%;
+  margin: 0;
+  text-align: left;
+  padding-left: 12px;
+}
+
+.switch-vertical .toggle-outside {
+  background: rgb(36, 36, 36);
+  position: absolute;
+  width: 23px;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+
+.switch-vertical .toggle-inside {
+  height: 17px;
+  left: 3px;
+  top: 3px;
+  width: 17px;
+}
+
+.switch-vertical input:checked ~ .toggle-outside .toggle-inside {
+  top: 3px;
+}
+
+.switch-vertical input ~ input:checked ~ .toggle-outside .toggle-inside {
+  top: 40px;
+}

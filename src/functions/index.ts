@@ -505,7 +505,11 @@ const dividers: Divider[] = [
   },
 ];
 
-function recursiveSplitByDivider(sensor: string, divider: Divider): ParsedSensor | null {
+function recursiveSplitByDivider(
+  sensor: string,
+  detailed: boolean,
+  divider: Divider
+): ParsedSensor | null {
   const { name, children, reverse, endDivider } = divider;
 
   let finalParsedSensor: ParsedSensor = {};
@@ -538,10 +542,10 @@ function recursiveSplitByDivider(sensor: string, divider: Divider): ParsedSensor
 
   let value = secondSplit[0];
 
-  if (children && children.length > 0) {
+  if (detailed && children && children.length > 0) {
     children.forEach((child) => {
       if (value.length < 3) return;
-      const childParsedSensor = recursiveSplitByDivider(value, child);
+      const childParsedSensor = recursiveSplitByDivider(value, detailed, child);
       if (childParsedSensor) {
         finalParsedSensor = {
           ...finalParsedSensor,
@@ -567,12 +571,12 @@ function recursiveSplitByDivider(sensor: string, divider: Divider): ParsedSensor
   return finalParsedSensor;
 }
 
-export function ParseSensor(sensor: string): ParsedSensor | null {
+export function ParseSensor(sensor: string, detailed: boolean): ParsedSensor | null {
   try {
     let parsedSensor: ParsedSensor = {};
 
     dividers.forEach((d) => {
-      const values = recursiveSplitByDivider(sensor, d);
+      const values = recursiveSplitByDivider(sensor, detailed, d);
       parsedSensor = { ...parsedSensor, ...values };
     });
 
