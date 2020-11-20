@@ -41,7 +41,7 @@ function getmr(): string; // Only works correctly in browser
           <SyntaxHighlighter className="w-100" language="bash" style={atomDark}>
             pnpm add abck
           </SyntaxHighlighter>
-          <SyntaxHighlighter className="w-100 mb-5" language="bash" style={atomDark}>
+          <SyntaxHighlighter className="w-100" language="bash" style={atomDark}>
             npm install abck
           </SyntaxHighlighter>
           <SyntaxHighlighter className="w-100 mb-5" language="bash" style={atomDark}>
