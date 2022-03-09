@@ -207,6 +207,9 @@ export function ParseNewSensor(sensor: string, detailed: boolean): ParsedSensor 
 
     const seperator = getSeperator(clean);
 
+    // eslint-disable-next-line no-console
+    console.log('\n', 'clean', clean, '\n');
+
     let parsedSensor: ParsedSensor = {};
 
     dividers.forEach((d) => {
