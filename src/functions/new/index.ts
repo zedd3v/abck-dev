@@ -57,8 +57,6 @@ function recursiveSplitByDivider(
   if (!reverse) {
     firstSplit = sensor.split(divider.divider + seperator);
 
-    console.log('firstSplit', firstSplit);
-
     if (firstSplit.length < 2) return null;
 
     if (endDivider) {
@@ -208,7 +206,7 @@ export function ParseNewSensor(sensor: string, detailed: boolean): ParsedSensor 
     const seperator = getSeperator(clean);
 
     // eslint-disable-next-line no-console
-    console.log('\n', 'clean', clean, '\n');
+    console.log('\n', clean, '\n');
 
     let parsedSensor: ParsedSensor = {};
 
