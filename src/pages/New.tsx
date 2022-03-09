@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
 import ParseOutput from '../components/ParseOutput';
 import CompareSensors from '../components/CompareSensors';
-import { ParseSensor, ParsedSensor } from '../functions';
+import { ParseNewSensor, ParsedSensor } from '../functions/new';
 
 export default (): JSX.Element => {
   const [sensors, setSensors] = useState<{
@@ -21,27 +21,28 @@ export default (): JSX.Element => {
   ): void => {
     if (!['firstSensor', 'secondSensor'].includes(sensorIndex)) return;
 
-    const switchTrue = (document.getElementById('switchTrue') as HTMLInputElement).checked;
-    const switchFalse = (document.getElementById('switchFalse') as HTMLInputElement).checked;
+    // const switchTrue = (document.getElementById('switchTrue') as HTMLInputElement).checked;
+    // const switchFalse = (document.getElementById('switchFalse') as HTMLInputElement).checked;
 
-    const detailed = !!(switchTrue && !switchFalse);
+    // const detailed = !!(switchTrue && !switchFalse);
+    const detailed = false;
 
     setSensors({
       ...sensors,
-      [sensorIndex]: ParseSensor(sensor, detailed),
+      [sensorIndex]: ParseNewSensor(sensor, detailed),
     });
   };
 
-  const updateBothSensors = (): void => {
-    parseSensorAndOuputResult(
-      'firstSensor',
-      (document.getElementById('firstSensorTextarea') as HTMLTextAreaElement).value
-    );
-    parseSensorAndOuputResult(
-      'secondSensor',
-      (document.getElementById('secondSensorTextarea') as HTMLTextAreaElement).value
-    );
-  };
+  // const updateBothSensors = (): void => {
+  //   parseSensorAndOuputResult(
+  //     'firstSensor',
+  //     (document.getElementById('firstSensorTextarea') as HTMLTextAreaElement).value
+  //   );
+  //   parseSensorAndOuputResult(
+  //     'secondSensor',
+  //     (document.getElementById('secondSensorTextarea') as HTMLTextAreaElement).value
+  //   );
+  // };
 
   return (
     <Row className="align-items-center justify-content-center p-3">
@@ -56,7 +57,7 @@ export default (): JSX.Element => {
             onChange={(e): void => parseSensorAndOuputResult('firstSensor', e.target.value)}
           />
         </Col>
-        <div className="toggle-switch-container">
+        {/* <div className="toggle-switch-container">
           <div className="toggle-switch switch-vertical">
             <input
               id="switchTrue"
@@ -75,7 +76,7 @@ export default (): JSX.Element => {
               <span className="toggle-inside" />
             </span>
           </div>
-        </div>
+        </div> */}
         <Col className="h-100 text-center justify-content-center align-items-center d-flex flex-column">
           <FormControl
             as="textarea"

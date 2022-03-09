@@ -9,12 +9,12 @@ export default ({ logo }: { logo: string }): JSX.Element => {
     <Row className="justify-content-center pt-4 mb-3">
       <Col className="text-center d-flex align-items-center justify-content-center">
         <Link className="w-100 btn" to="/">
-          Parser
+          New
         </Link>
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
-        <Link className="w-100 btn" to="/api">
-          Api
+        <Link className="w-100 btn" to="/old">
+          Old (TODO/W.I.P)
         </Link>
       </Col>
       <Col className="text-center col-1 d-flex align-items-center justify-content-center">
@@ -22,12 +22,12 @@ export default ({ logo }: { logo: string }): JSX.Element => {
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
         <Link className="w-100 btn" to="/package">
-          Package
+          Package (Outdated)
         </Link>
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
         <Button href="https://lelinhtinh.github.io/de4js/" target="_blank" className="w-100">
-          Deobfuscator
+          Deobfuscator (Only for old)
         </Button>
       </Col>
     </Row>

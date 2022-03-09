@@ -571,7 +571,7 @@ function recursiveSplitByDivider(
   return finalParsedSensor;
 }
 
-export function ParseSensor(sensor: string, detailed: boolean): ParsedSensor | null {
+export function ParseOldSensor(sensor: string, detailed: boolean): ParsedSensor | null {
   try {
     let parsedSensor: ParsedSensor = {};
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ParsedSensor } from '../functions';
+import { ParsedSensor } from '../functions/old';
 
 export default ({
   firstSensor,

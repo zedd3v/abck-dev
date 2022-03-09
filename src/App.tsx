@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Header from './components/Header';
-import Parser from './pages/Parser';
-import Api from './pages/Api';
+import Old from './pages/Old';
+import New from './pages/New';
 import Package from './pages/Package';
 import Footer from './components/Footer';
 import logo from './logo.png';
@@ -17,10 +17,10 @@ export default function App(): JSX.Element {
           <Header logo={logo} />
           <Switch>
             <Route exact path="/">
-              <Parser />
+              <New />
             </Route>
-            <Route path="/api">
-              <Api />
+            <Route path="/old">
+              <Old />
             </Route>
             <Route path="/package">
               <Package />
