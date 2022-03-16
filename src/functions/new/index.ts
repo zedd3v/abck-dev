@@ -26,7 +26,7 @@ const dividers: Divider[] = [
   { divider: '-103', name: 'bmak.vcact' },
   { divider: '-106', name: 'bmak.aj_type + bmak.aj_indx' },
   { divider: '-115', name: 'bunch of stuff' },
-  { divider: '-112', name: `document.URL.replace(/\\|"/g, '')` },
+  { divider: '-112', name: `document.URL` },
   { divider: '-119', name: 'bmak.mr' },
   { divider: '-122', name: 'sed' },
   { divider: '-123', name: 'mn_r part 1' },
@@ -35,8 +35,8 @@ const dividers: Divider[] = [
   { divider: '-127', name: 'bmak.nav_perm' },
   { divider: '-70', name: 'bmak.fpcf.fpValStr' },
   { divider: '-80', name: 'fpValHash' },
-  { divider: '-90', name: 'fmt.Sprint(dynamicFuncRes)' },
-  { divider: '-116', name: 'strconv.Itoa(bmak.o9)' },
+  { divider: '-90', name: 'dynamicFuncRes' },
+  { divider: '-116', name: 'bmak.o9' },
   { divider: '-129', name: 'some fingerprint stuff', last: true },
 ];
 
@@ -181,7 +181,7 @@ const secondDec = (payload: string, bmSzSecondComp: number): string => {
 
 const parseBmSzComps = (sensor: string): number[] => {
   return sensor
-    .split('2;')[1]
+    .slice(2)
     .split(';')
     .slice(0, 2)
     .map((n) => Number(n));
