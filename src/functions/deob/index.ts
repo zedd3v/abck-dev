@@ -20,15 +20,21 @@ const clean = (script: string): string => {
   return cleaned;
 };
 
-// waa waa, waaa, youre not using ast! fiend!
-const createDeobScope = (declarations: string) => {
-  // eslint-disable-next-line no-eval
-  eval(declarations);
+// browser behaviour made it dirty
+const getDeobVals = (deobScript: string, deobArr: string[]) => {
+  let evalScript = `${deobScript};return{`;
 
-  // eslint-disable-next-line no-eval
-  return (expression: string) => eval(expression);
+  deobArr.forEach((deobCall) => {
+    const q = deobCall.includes("'") ? '"' : "'";
+
+    evalScript += `${q}${deobCall}${q}:${decodeURIComponent(deobCall)},`;
+  });
+
+  // eslint-disable-next-line no-new-func
+  return new Function(`${evalScript}};`)();
 };
 
+// waa waa, waaa, youre not using ast! fiend!
 const deobfuscate = (script: string): string => {
   const originalScript = script;
 
@@ -40,32 +46,31 @@ const deobfuscate = (script: string): string => {
   if (!mainAkam || mainAkam.length < 1) throw err;
 
   // remove the main execution case
-  let cleanedScript = script.replace(
+  let deobScript = script.replace(
     mainAkam[0],
     `break;case ${mainAkam[1]}:{return;}break;case ${mainAkam[3]}:{`
   );
 
   // remove the top parent function return
-  const topFuncReturn = /return\s?(\w{2}\.call\(this,\s?\w{2}\))/i.exec(cleanedScript);
+  const topFuncReturn = /return\s?(\w{2}\.call\(this,\s?\w{2}\))/i.exec(deobScript);
   if (!topFuncReturn || topFuncReturn.length < 1) throw err;
 
-  cleanedScript = cleanedScript.replace(topFuncReturn[0], topFuncReturn[1]).slice(12, -5);
+  deobScript = deobScript.replace(topFuncReturn[0], topFuncReturn[1]).slice(12, -5);
 
-  // create deob scope
-  const deobScope = createDeobScope(cleanedScript);
+  let cleanedScript = `// zed_pinocchio;\n${originalScript}`;
 
-  // put main execution case back
-  cleanedScript = `// zed_pinocchio;\n${originalScript}`;
-
-  // deob everything (not everything, sowwy i lied)
+  // get deobbed vals and replace
   const deobMatches = [
-    ...cleanedScript.matchAll(
-      /(\w{2})\.(\w{2})\((?:"(.*?)",\s?(\w{2})|(\w{2}),\s?(\w{2}),\s?(\w{2}))\)/gim
-    ),
+    // (\w{2})\.(\w{2})\((?:"(.*?)",\s?(\w{2})|(\w{2}),\s?(\w{2}),\s?(\w{2}))\)
+    ...cleanedScript.matchAll(/\w{2}\.\w{2}\((?:".*?",\s?\w{2}|\w{2},\s?\w{2},\s?\w{2})\)/gim),
   ];
   if (deobMatches.length > 0) {
+    const deobArr = [...new Set(deobMatches.map((m) => encodeURIComponent(m[0])))];
+    const deobVals = getDeobVals(deobScript, deobArr);
+
+    // deob everything (not everything, sowwy i lied)
     deobMatches.forEach((m) => {
-      cleanedScript = cleanedScript.replace(m[0], `\`${deobScope(`${m[0]}`)}\``);
+      cleanedScript = cleanedScript.replace(m[0], `\`${deobVals[encodeURIComponent(m[0])]}\``);
     });
   }
 

@@ -59,6 +59,7 @@ export default (): JSX.Element => {
               id="deobfuscatedScriptTextarea"
               className="light-input"
               disabled
+              value={deobbedScript}
             />
           </Col>
         </Row>
