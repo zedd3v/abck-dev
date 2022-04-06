@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
 import ParseOutput from '../components/ParseOutput';
 import CompareSensors from '../components/CompareSensors';
-import { ParseNewSensor, ParsedSensor } from '../functions/new';
+import { ParseNewSensor, ParsedSensor } from '../functions/parse/new';
 
 export default (): JSX.Element => {
   const [sensors, setSensors] = useState<{

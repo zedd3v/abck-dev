@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Old from './pages/Old';
 import New from './pages/New';
 import Package from './pages/Package';
+import Deobfuscator from './pages/Deobfuscator';
 import Footer from './components/Footer';
 import logo from './logo.png';
 import './App.css';
@@ -24,6 +25,9 @@ export default function App(): JSX.Element {
             </Route>
             <Route path="/package">
               <Package />
+            </Route>
+            <Route path="/deob">
+              <Deobfuscator />
             </Route>
           </Switch>
           <Footer />

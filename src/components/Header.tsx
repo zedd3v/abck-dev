@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 
 export default ({ logo }: { logo: string }): JSX.Element => {
   return (
@@ -26,9 +25,9 @@ export default ({ logo }: { logo: string }): JSX.Element => {
         </Link>
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
-        <Button href="https://lelinhtinh.github.io/de4js/" target="_blank" className="w-100">
-          Deobfuscator (Only for old)
-        </Button>
+        <Link className="w-100 btn" to="/deob">
+          Deobfuscator
+        </Link>
       </Col>
     </Row>
   );
