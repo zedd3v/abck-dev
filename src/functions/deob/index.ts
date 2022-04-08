@@ -61,8 +61,8 @@ const deobfuscate = (script: string): string => {
 
   // get deobbed vals and replace
   const deobMatches = [
-    // (\w{2})\.(\w{2})\((?:"(.*?)",\s?(\w{2})|(\w{2}),\s?(\w{2}),\s?(\w{2}))\)
-    ...cleanedScript.matchAll(/\w{2}\.\w{2}\((?:".*?",\s?\w{2}|\w{2},\s?\w{2},\s?\w{2})\)/gim),
+    // (\w{2})\.(\w{2})\((?:"(.*?)",\s?(\w{2,3})|(\w{2,3}),\s?(\w{2,3}),\s?(\w{2,3}))\)
+    ...cleanedScript.matchAll(/\w{2}\.\w{2}\((?:".*?",\s?\w{2,3}|\w{2,3},\s?\w{2,3},\s?\w{2,3})\)/gim),
   ];
   if (deobMatches.length > 0) {
     const deobArr = [...new Set(deobMatches.map((m) => encodeURIComponent(m[0])))];
