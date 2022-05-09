@@ -39,7 +39,7 @@ const deobfuscate = (script: string): string => {
   const originalScript = script;
 
   // grab main case
-  const mainAkam = /(?:do{switch\(\w+\){|break;)case\s?(\w{2}):{\s?((?:\w{2}(?:\+|-)?=\w{2};)?\w{2}\s?=\s?\(function\(\w{2}\)\{return\s?\w{2}\.apply.*?)}\s?break;case\s?(\w{2}):{/i.exec(
+  const mainAkam = /(do{switch\(\w+\){|break;)case\s?(\w{2}):{\s?((?:\w{2}(?:\+|-)?=\w{2};)?\w{2}\s?=\s?\(function\(\w{2}\)\{return\s?\w{2}\.apply.*?)}\s?break;case\s?(\w{2}):{/i.exec(
     script
   );
 
@@ -48,7 +48,7 @@ const deobfuscate = (script: string): string => {
   // remove the main execution case
   let deobScript = script.replace(
     mainAkam[0],
-    `break;case ${mainAkam[1]}:{return;}break;case ${mainAkam[3]}:{`
+    `${mainAkam[1]}case ${mainAkam[2]}:{return;}break;case ${mainAkam[4]}:{`
   );
 
   // remove the top parent function return
