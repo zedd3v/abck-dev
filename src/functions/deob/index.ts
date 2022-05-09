@@ -39,7 +39,7 @@ const deobfuscate = (script: string): string => {
   const originalScript = script;
 
   // grab main case
-  const mainAkam = /break;case\s?(\w{2}):{\s?((?:\w{2}(?:\+|-)?=\w{2};)?\w{2}\s?=\s?\(function\(\w{2}\)\{return\s?\w{2}\.apply.*?)}\s?break;case\s?(\w{2}):{/i.exec(
+  const mainAkam = /(?:do{switch\(\w+\){|break;)case\s?(\w{2}):{\s?((?:\w{2}(?:\+|-)?=\w{2};)?\w{2}\s?=\s?\(function\(\w{2}\)\{return\s?\w{2}\.apply.*?)}\s?break;case\s?(\w{2}):{/i.exec(
     script
   );
 
