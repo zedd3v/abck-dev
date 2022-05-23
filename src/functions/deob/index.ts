@@ -43,7 +43,7 @@ const deobfuscate = (script: string): string => {
     script
   );
 
-  if (!mainAkam || mainAkam.length < 1) throw err;
+  if (!mainAkam || mainAkam.length < 3) throw err;
 
   // remove the main execution case
   let deobScript = script.replace(
@@ -61,9 +61,8 @@ const deobfuscate = (script: string): string => {
 
   // get deobbed vals and replace
   const deobMatches = [
-    // (\w{2})\.(\w{2})\((?:"(.*?)",\s?(\w{2,3})|(\w{2,3}),\s?(\w{2,3}),\s?(\w{2,3}))\)
     ...cleanedScript.matchAll(
-      /\w{2}\.\w{2}\((?:".*?",\s?\w{2,3}|\w{2,3},\s?\w{2,3},\s?\w{2,3})\)/gim
+      /\w{2}\.\w{2}\((?:\w{2,3},\s?\w{2,3}|\w{2,3},\s?\w{2,3},\s?\w{2,3},\s?\w{2,3}|".*?",\s?\w{2,3}|\w{2,3},\s?\w{2,3},\s?\w{2,3})\)/gim
     ),
   ];
   if (deobMatches.length > 0) {
