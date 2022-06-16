@@ -1,7 +1,7 @@
 import React from 'react';
 import { ParsedSensor } from '../functions/parse/old';
 
-export default ({
+const CompareSensors = ({
   firstSensor,
   secondSensor,
 }: {
@@ -22,3 +22,5 @@ export default ({
     </div>
   );
 };
+
+export default CompareSensors;

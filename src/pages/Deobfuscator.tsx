@@ -15,7 +15,7 @@ const download = (text: string) => {
   document.body.removeChild(element);
 };
 
-export default (): JSX.Element => {
+const Deobfuscator = (): JSX.Element => {
   const [deobbedScript, setDeobbedScript] = useState('');
 
   const deobfuscateScriptAndOuputResult = (script: string) => {
@@ -67,3 +67,5 @@ export default (): JSX.Element => {
     </Row>
   );
 };
+
+export default Deobfuscator;

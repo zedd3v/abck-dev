@@ -4,7 +4,13 @@ import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
 import { ParsedSensor } from '../functions/parse/old';
 
-export default ({ title, elements }: { title: string; elements: ParsedSensor }): JSX.Element => {
+const ParseOutput = ({
+  title,
+  elements,
+}: {
+  title: string;
+  elements: ParsedSensor;
+}): JSX.Element => {
   return (
     <div>
       <h2 className="mb-5 ml-3">{title}</h2>
@@ -26,3 +32,5 @@ export default ({ title, elements }: { title: string; elements: ParsedSensor }):
     </div>
   );
 };
+
+export default ParseOutput;

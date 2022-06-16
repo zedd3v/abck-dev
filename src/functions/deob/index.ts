@@ -1,24 +1,6 @@
+import clean from './clean';
+
 const err = new Error('something failed. oopsie');
-
-const clean = (script: string): string => {
-  let cleaned = script.toString();
-
-  // clean prop calls
-  // ["property"] => .property
-  for (let tries = 0; tries < 5; tries += 1) {
-    const propMatches = [
-      ...cleaned.matchAll(/([^ =:])\[(?:\x60|"|')([a-zA-Z]\w*)(?:\x60|"|')\]/gim),
-    ];
-    if (propMatches.length > 0) {
-      // eslint-disable-next-line no-loop-func
-      propMatches.forEach((m) => {
-        cleaned = cleaned.replace(m[0], `${m[1]}.${m[2]}`);
-      });
-    }
-  }
-
-  return cleaned;
-};
 
 // browser behaviour made it dirty
 const getDeobVals = (deobScript: string, deobArr: string[]) => {
@@ -39,9 +21,10 @@ const deobfuscate = (script: string): string => {
   const originalScript = script;
 
   // grab main case
-  const mainAkam = /(do{switch\(\w+\){|break;)case\s?(\w{2}):{\s?((?:\w{2}(?:\+|-)?=\w{2};)?\w{2}\s?=\s?\(function\(\w{2}\)\{return\s?\w{2}\.apply.*?)}\s?break;case\s?(\w{2}):{/i.exec(
-    script
-  );
+  const mainAkam =
+    /(do{switch\(\w+\){|break;)case\s?(\w{2}):{\s?((?:\w{2}(?:\+|-)?=\w{2};)?\w{2}\s?=\s?\(function\(\w{2}\)\{return\s?\w{2}\.apply.*?)}\s?break;case\s?(\w{2}):{/i.exec(
+      script
+    );
 
   if (!mainAkam || mainAkam.length < 3) throw err;
 

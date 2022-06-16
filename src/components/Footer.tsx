@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default (): JSX.Element => {
+const Footer = (): JSX.Element => {
   return (
     <Row className="justify-content-center footer">
       <Col className="text-center d-flex align-items-center justify-content-center flex-column">
@@ -16,3 +16,5 @@ export default (): JSX.Element => {
     </Row>
   );
 };
+
+export default Footer;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default ({ logo }: { logo: string }): JSX.Element => {
+const Header = ({ logo }: { logo: string }): JSX.Element => {
   return (
     <Row className="justify-content-center pt-4 mb-3">
       <Col className="text-center d-flex align-items-center justify-content-center">
@@ -32,3 +32,5 @@ export default ({ logo }: { logo: string }): JSX.Element => {
     </Row>
   );
 };
+
+export default Header;

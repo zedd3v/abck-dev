@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Header from './components/Header';
 import Old from './pages/Old';
@@ -16,20 +16,12 @@ export default function App(): JSX.Element {
       <Container fluid className="h-100">
         <BrowserRouter>
           <Header logo={logo} />
-          <Switch>
-            <Route exact path="/">
-              <New />
-            </Route>
-            <Route path="/old">
-              <Old />
-            </Route>
-            <Route path="/package">
-              <Package />
-            </Route>
-            <Route path="/deob">
-              <Deobfuscator />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<New />} />
+            <Route path="/old" element={<Old />} />
+            <Route path="/package" element={<Package />} />
+            <Route path="/deob" element={<Deobfuscator />} />
+          </Routes>
           <Footer />
         </BrowserRouter>
       </Container>

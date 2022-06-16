@@ -6,7 +6,7 @@ import ParseOutput from '../components/ParseOutput';
 import CompareSensors from '../components/CompareSensors';
 import { ParseNewSensor, ParsedSensor } from '../functions/parse/new';
 
-export default (): JSX.Element => {
+const New = (): JSX.Element => {
   const [sensors, setSensors] = useState<{
     firstSensor: null | ParsedSensor;
     secondSensor: null | ParsedSensor;
@@ -115,3 +115,5 @@ export default (): JSX.Element => {
     </Row>
   );
 };
+
+export default New;
