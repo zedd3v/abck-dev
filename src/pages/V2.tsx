@@ -4,9 +4,9 @@ import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
 import ParseOutput from '../components/ParseOutput';
 import CompareSensors from '../components/CompareSensors';
-import { ParseOldSensor, ParsedSensor } from '../functions/parse/old';
+import { ParseSensor, ParsedSensor } from '../functions/parse/v2';
 
-const Old = (): JSX.Element => {
+const V2 = (): JSX.Element => {
   const [sensors, setSensors] = useState<{
     firstSensor: null | ParsedSensor;
     secondSensor: null | ParsedSensor;
@@ -29,7 +29,7 @@ const Old = (): JSX.Element => {
 
     setSensors({
       ...sensors,
-      [sensorIndex]: ParseOldSensor(sensor, detailed),
+      [sensorIndex]: ParseSensor(sensor, detailed),
     });
   };
 
@@ -116,4 +116,4 @@ const Old = (): JSX.Element => {
   );
 };
 
-export default Old;
+export default V2;

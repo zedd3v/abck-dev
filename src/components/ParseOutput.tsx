@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
-import { ParsedSensor } from '../functions/parse/old';
+import { ParsedSensor } from '../functions/parse/v3';
 
 const ParseOutput = ({
   title,

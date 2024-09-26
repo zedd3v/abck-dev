@@ -8,25 +8,15 @@ const Header = ({ logo }: { logo: string }): JSX.Element => {
     <Row className="justify-content-center pt-4 mb-3">
       <Col className="text-center d-flex align-items-center justify-content-center">
         <Link className="w-100 btn" to="/">
-          New
-        </Link>
-      </Col>
-      <Col className="text-center d-flex align-items-center justify-content-center">
-        <Link className="w-100 btn" to="/old">
-          Old (TODO/W.I.P)
+          V2
         </Link>
       </Col>
       <Col className="text-center col-1 d-flex align-items-center justify-content-center">
         <img src={logo} alt="logo" width="32" />
       </Col>
       <Col className="text-center d-flex align-items-center justify-content-center">
-        <Link className="w-100 btn" to="/package">
-          Package (Outdated)
-        </Link>
-      </Col>
-      <Col className="text-center d-flex align-items-center justify-content-center">
-        <Link className="w-100 btn" to="/deob">
-          Deobfuscator
+        <Link className="w-100 btn" to="/v3">
+          V3
         </Link>
       </Col>
     </Row>

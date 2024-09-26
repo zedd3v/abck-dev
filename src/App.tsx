@@ -2,10 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Header from './components/Header';
-import Old from './pages/Old';
-import New from './pages/New';
-import Package from './pages/Package';
-import Deobfuscator from './pages/Deobfuscator';
+import V2 from './pages/V2';
+import V3 from './pages/V3';
 import Footer from './components/Footer';
 import logo from './logo.png';
 import './App.css';
@@ -17,10 +15,8 @@ export default function App(): JSX.Element {
         <BrowserRouter>
           <Header logo={logo} />
           <Routes>
-            <Route path="/" element={<New />} />
-            <Route path="/old" element={<Old />} />
-            <Route path="/package" element={<Package />} />
-            <Route path="/deob" element={<Deobfuscator />} />
+            <Route path="/" element={<V2 />} />
+            <Route path="/v3" element={<V3 />} />
           </Routes>
           <Footer />
         </BrowserRouter>

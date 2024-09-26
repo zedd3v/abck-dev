@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
 import ParseOutput from '../components/ParseOutput';
 import CompareSensors from '../components/CompareSensors';
-import { ParseNewSensor, ParsedSensor } from '../functions/parse/new';
+import { ParseSensor, ParsedSensor } from '../functions/parse/v3';
 
-const New = (): JSX.Element => {
-  const [sensors, setSensors] = useState<{
-    firstSensor: null | ParsedSensor;
-    secondSensor: null | ParsedSensor;
-  }>({
-    firstSensor: null,
-    secondSensor: null,
-  });
+const V3 = (): JSX.Element => {
+  const [encodeKey1, setEncodeKey1] = useState<number>(0);
+  const [encodeKey2, setEncodeKey2] = useState<number>(0);
 
   const parseSensorAndOuputResult = (
     sensorIndex: 'firstSensor' | 'secondSensor',
-    sensor: string
+    sensor: string,
+    encodeKey: number
   ): void => {
     if (!['firstSensor', 'secondSensor'].includes(sensorIndex)) return;
 
@@ -29,9 +25,38 @@ const New = (): JSX.Element => {
 
     setSensors({
       ...sensors,
-      [sensorIndex]: ParseNewSensor(sensor, detailed),
+      [sensorIndex]: ParseSensor(sensor, encodeKey, detailed),
     });
   };
+
+  // update sensor on encode key change
+  useEffect(() => {
+    if (encodeKey1) {
+      parseSensorAndOuputResult(
+        'firstSensor',
+        (document.getElementById('firstSensorTextarea') as HTMLTextAreaElement)?.value,
+        encodeKey1
+      );
+    }
+  }, [encodeKey1]);
+
+  useEffect(() => {
+    if (encodeKey2) {
+      parseSensorAndOuputResult(
+        'secondSensor',
+        (document.getElementById('secondSensorTextarea') as HTMLTextAreaElement)?.value,
+        encodeKey2
+      );
+    }
+  }, [encodeKey2]);
+
+  const [sensors, setSensors] = useState<{
+    firstSensor: null | ParsedSensor;
+    secondSensor: null | ParsedSensor;
+  }>({
+    firstSensor: null,
+    secondSensor: null,
+  });
 
   // const updateBothSensors = (): void => {
   //   parseSensorAndOuputResult(
@@ -48,13 +73,21 @@ const New = (): JSX.Element => {
     <Row className="align-items-center justify-content-center p-3">
       <Row className="align-items-center justify-content-center w-100 py-4 px-2 light mb-4 rounded">
         <Col className="h-100 text-center justify-content-center align-items-center d-flex flex-column">
+          <input
+            type="text"
+            className="light-input w-100 mb-3 p-2 rounded"
+            placeholder="Encode Key"
+            onChange={(e): void => setEncodeKey1(Number(e.target.value))}
+          />
           <FormControl
             as="textarea"
             rows={6}
             id="firstSensorTextarea"
             placeholder="First Sensor"
             className="light-input"
-            onChange={(e): void => parseSensorAndOuputResult('firstSensor', e.target.value)}
+            onChange={(e): void =>
+              parseSensorAndOuputResult('firstSensor', e.target.value, encodeKey1)
+            }
           />
         </Col>
         {/* <div className="toggle-switch-container">
@@ -78,13 +111,21 @@ const New = (): JSX.Element => {
           </div>
         </div> */}
         <Col className="h-100 text-center justify-content-center align-items-center d-flex flex-column">
+          <input
+            type="text"
+            className="light-input w-100 mb-3 p-2 rounded"
+            placeholder="Encode Key"
+            onChange={(e): void => setEncodeKey1(Number(e.target.value))}
+          />
           <FormControl
             as="textarea"
             rows={6}
             id="secondSensorTextarea"
             placeholder="Second Sensor"
             className="light-input"
-            onChange={(e): void => parseSensorAndOuputResult('secondSensor', e.target.value)}
+            onChange={(e): void =>
+              parseSensorAndOuputResult('secondSensor', e.target.value, encodeKey2)
+            }
           />
         </Col>
       </Row>
@@ -116,4 +157,4 @@ const New = (): JSX.Element => {
   );
 };
 
-export default New;
+export default V3;

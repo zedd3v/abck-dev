@@ -131,7 +131,7 @@ const parseBmSzComps = (sensor: string): number[] => {
     .map((n) => Number(n));
 };
 
-export function ParseNewSensor(sensor: string, detailed: boolean): ParsedSensor | null {
+export function ParseSensor(sensor: string, detailed: boolean): ParsedSensor | null {
   try {
     let rawSensor = sensor.toString();
 
