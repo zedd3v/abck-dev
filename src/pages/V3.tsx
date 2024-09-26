@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
-import ParseOutput from '../components/ParseOutput';
-import CompareSensors from '../components/CompareSensors';
-import { ParseSensor, ParsedSensor } from '../functions/parse/v3';
+import { ParseSensor } from '../functions/parse/v3';
 
 const V3 = (): JSX.Element => {
   const [encodeKey1, setEncodeKey1] = useState<number>(0);
@@ -51,8 +49,8 @@ const V3 = (): JSX.Element => {
   }, [encodeKey2]);
 
   const [sensors, setSensors] = useState<{
-    firstSensor: null | ParsedSensor;
-    secondSensor: null | ParsedSensor;
+    firstSensor: null | string;
+    secondSensor: null | string;
   }>({
     firstSensor: null,
     secondSensor: null,
@@ -115,7 +113,7 @@ const V3 = (): JSX.Element => {
             type="text"
             className="light-input w-100 mb-3 p-2 rounded"
             placeholder="Encode Key"
-            onChange={(e): void => setEncodeKey1(Number(e.target.value))}
+            onChange={(e): void => setEncodeKey2(Number(e.target.value))}
           />
           <FormControl
             as="textarea"
@@ -133,7 +131,13 @@ const V3 = (): JSX.Element => {
       {sensors.firstSensor ? (
         <Row className="align-items-center justify-content-center w-100 mb-4 rounded">
           <Col className="h-100 light justify-content-center align-items-center p-4 d-flex flex-column rounded">
-            <ParseOutput title="First Sensor Data" elements={sensors.firstSensor} />
+            <FormControl
+              as="textarea"
+              rows={25}
+              placeholder="First Sensor Data"
+              className="light-input"
+              value={sensors.firstSensor}
+            />
           </Col>
         </Row>
       ) : null}
@@ -141,18 +145,24 @@ const V3 = (): JSX.Element => {
       {sensors.secondSensor ? (
         <Row className="align-items-center justify-content-center w-100 mb-4 rounded">
           <Col className="h-100 light justify-content-center align-items-center p-4 d-flex flex-column rounded">
-            <ParseOutput title="Second Sensor Data" elements={sensors.secondSensor} />
+            <FormControl
+              as="textarea"
+              rows={25}
+              placeholder="Second Sensor Data"
+              className="light-input"
+              value={sensors.secondSensor}
+            />
           </Col>
         </Row>
       ) : null}
 
-      {sensors.firstSensor && sensors.secondSensor ? (
+      {/* {sensors.firstSensor && sensors.secondSensor ? (
         <Row className="align-items-center justify-content-center w-100 mb-4 rounded">
           <Col className="h-100 light p-4 rounded">
             <CompareSensors firstSensor={sensors.firstSensor} secondSensor={sensors.secondSensor} />
           </Col>
         </Row>
-      ) : null}
+      ) : null} */}
     </Row>
   );
 };

@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise */
-
 const decodeArr = [
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, -1, 2, 3, 4, 5, -1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
@@ -12,32 +10,43 @@ const decodeArr = [
 const chars =
   ' !#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~';
 
+const decodeChar = (char: string, shiftedComp: number) => {
+  let pos = chars.indexOf(char);
+  if (pos < 92) pos += 92;
+
+  pos -= shiftedComp % 92;
+  if (pos > 92) pos -= 92;
+
+  return String.fromCharCode(decodeArr.indexOf(pos));
+};
+
 export const firstDec = (sensor: string, bmSzFirstComp: number): string => {
-  let dec = '';
+  const dec = [];
 
   let bmSzFC = bmSzFirstComp;
 
   for (let i = 0; i < sensor.length; i += 1) {
     const shifted = (bmSzFC >> 8) & 65535;
+
     bmSzFC *= 65793;
     bmSzFC &= 4294967295;
     bmSzFC += 4282663;
     bmSzFC &= 8388607;
 
-    // snippet taken from github.com/SteakEnthusiast
-    let newIndex = decodeArr[sensor.charCodeAt(i)];
-    newIndex -= shifted % chars.length;
-    if (newIndex < 0) {
-      newIndex += chars.length;
+    const charCode = sensor.charCodeAt(i);
+    if (charCode < 32 || charCode === 39 || charCode === 34 || charCode === 92) {
+      dec[i] = sensor[i];
+    } else {
+      dec[i] = decodeChar(sensor[i], shifted);
     }
-
-    dec += chars[newIndex];
   }
 
-  return dec;
+  return dec.join('');
 };
 
 export const secondDec = (payload: string, bmSzSecondComp: number): string => {
+  console.log('\nbmSzSecondComp', bmSzSecondComp); // 7229381
+
   const pcs = payload.split(':');
   const mixingIndexes = [];
   let bmSzSC = bmSzSecondComp;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ParsedSensor } from '../functions/parse/v3';
+import { ParsedSensor } from '../functions/parse/v2';
 
 const CompareSensors = ({
   firstSensor,
