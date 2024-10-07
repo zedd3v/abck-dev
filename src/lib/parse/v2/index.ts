@@ -140,23 +140,23 @@ export function parseSensor(sensor: string, detailed: boolean): ParsedSensor {
 
     const bmSzComps = parseBmSzComps(rawSensor);
 
-    console.log('\nbmSzComps', bmSzComps);
+    // console.log('\nbmSzComps', bmSzComps);
 
     const dirty = rawSensor.split(';').slice(4).join(';');
 
-    console.log('\ndirty', dirty);
+    // console.log('\ndirty', dirty);
 
     const unshuffled = firstDec(dirty, bmSzComps[0]);
 
-    console.log('\nunshuffled', unshuffled);
+    // console.log('\nunshuffled', unshuffled);
 
     const decoded = secondDec(unshuffled, bmSzComps[1]);
 
-    console.log('\ndecoded', decoded);
+    // console.log('\ndecoded', decoded);
 
     const seperator = getSeperator(decoded);
 
-    console.log('\nseperator', JSON.stringify(decoded.split(seperator)));
+    // console.log('\nseperator', JSON.stringify(decoded.split(seperator)));
 
     let parsedSensor: ParsedSensor = {};
 
