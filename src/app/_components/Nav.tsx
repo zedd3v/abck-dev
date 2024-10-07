@@ -22,7 +22,7 @@ const Nav = () => {
           className='w-full text-center justify-center flex items-center p-2 text-white transition-all hover:bg-gray-600 bg-gray-700 rounded-md'
           href='/v3'
         >
-          V2
+          V3
         </Link>
       </div>
     </div>
