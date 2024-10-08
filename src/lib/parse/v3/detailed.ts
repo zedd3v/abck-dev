@@ -30,7 +30,7 @@ const dividers: Dividers = {
     keys: [
       { index: 0, key: 'hardwareConcurrency' },
       { index: 1, key: 'pluginArray.length' },
-      { index: 2, key: "window.chrome" },
+      { index: 2, key: 'window.chrome' },
       { index: 3, key: 'bool(plugins.length)' },
       { index: 4, key: 'deviceMemory' },
     ],
@@ -61,19 +61,32 @@ const parseSensorDetails = (decoded: string): { [key: string]: string } => {
     const val = json[key];
 
     if (Array.isArray(val)) {
+      // sort alphabetically
+      const sorted = [];
+
       for (const idx in val) {
         for (const subKey in val[idx]) {
-          details[`${key}.${subKey}`] = String(val[idx][subKey]);
+          sorted.push(subKey);
+        }
+      }
 
-          if (subKey in dividers) {
-            const { divider, keys } = dividers[subKey];
+      sorted.sort();
 
-            val[idx][subKey].split(divider).forEach((v: string, i: number) => {
-              const dividerKey = keys.find((k) => k.index === i);
-              if (dividerKey) {
-                details[`${key}.${subKey}.${dividerKey.key}`] = String(v);
-              }
-            });
+      for (const k of sorted) {
+        for (const idx in val) {
+          if (k in val[idx]) {
+            details[`${key}.${k}`] = String(val[idx][k]);
+
+            if (k in dividers) {
+              const { divider, keys } = dividers[k];
+
+              val[idx][k].split(divider).forEach((v: string, i: number) => {
+                const dividerKey = keys.find((k) => k.index === i);
+                if (dividerKey) {
+                  details[`${key}.${k}.${dividerKey.key}`] = String(v);
+                }
+              });
+            }
           }
         }
       }
