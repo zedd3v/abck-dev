@@ -39,7 +39,7 @@ export default function HomePage() {
           {Object.keys(parsedSensorL)?.length ? (
             <textarea
               className='w-full mt-4 text-white transition-all border-2 border-gray-600 hover:bg-gray-600 bg-gray-700 rounded-md'
-              disabled
+              readOnly
               rows={10}
               value={JSON.stringify(parsedSensorR)}
             />
@@ -55,7 +55,7 @@ export default function HomePage() {
           {Object.keys(parsedSensorR)?.length ? (
             <textarea
               className='w-full mt-4 text-white transition-all border-2 border-gray-600 hover:bg-gray-600 bg-gray-700 rounded-md'
-              disabled
+              readOnly
               rows={10}
               value={JSON.stringify(parsedSensorR)}
             />

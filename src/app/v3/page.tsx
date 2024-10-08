@@ -52,7 +52,7 @@ export default function HomePage() {
           {parsedSensorL?.sensor !== '' ? (
             <textarea
               className='w-full mt-4 text-white transition-all border-2 border-gray-600 hover:bg-gray-600 bg-gray-700 rounded-md'
-              disabled
+              readOnly
               rows={10}
               value={parsedSensorL?.sensor}
             />
@@ -88,7 +88,7 @@ export default function HomePage() {
           {parsedSensorR?.sensor !== '' ? (
             <textarea
               className='w-full mt-4 text-white transition-all border-2 border-gray-600 hover:bg-gray-600 bg-gray-700 rounded-md'
-              disabled
+              readOnly
               rows={10}
               value={parsedSensorR?.sensor}
             />

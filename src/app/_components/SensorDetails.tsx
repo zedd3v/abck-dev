@@ -14,7 +14,7 @@ const SensorDetails = ({ key, value, mismatch = false, inverted = false }: Senso
         className={`${
           mismatch ? 'border-red-500' : value !== '' ? 'border-green-500' : 'border-yellow-500'
         } w-full text-xs text-white mt-0.5 transition-all border-1 border-opacity-40 py-1 px-2 bg-gray-700 rounded-md`}
-        disabled
+        readOnly
         value={value}
       />
     </div>
