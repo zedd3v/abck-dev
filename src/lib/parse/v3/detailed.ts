@@ -52,6 +52,10 @@ const dividers: Dividers = {
   },
 };
 
+const makePrintVal = (v: string | number): string => {
+  return typeof v === 'string' ? `"${v}"` : String(v);
+};
+
 const parseSensorDetails = (decoded: string): { [key: string]: string } => {
   const json = JSON.parse(decoded);
 
@@ -75,7 +79,7 @@ const parseSensorDetails = (decoded: string): { [key: string]: string } => {
       for (const k of sorted) {
         for (const idx in val) {
           if (k in val[idx]) {
-            details[`${key}.${k}`] = String(val[idx][k]);
+            details[`${key}.${k}`] = makePrintVal(val[idx][k]);
 
             if (k in dividers) {
               const { divider, keys } = dividers[k];
@@ -83,7 +87,7 @@ const parseSensorDetails = (decoded: string): { [key: string]: string } => {
               val[idx][k].split(divider).forEach((v: string, i: number) => {
                 const dividerKey = keys.find((k) => k.index === i);
                 if (dividerKey) {
-                  details[`${key}.${k}.${dividerKey.key}`] = String(v);
+                  details[`${key}.${k}.${dividerKey.key}`] = makePrintVal(v);
                 }
               });
             }
@@ -91,7 +95,7 @@ const parseSensorDetails = (decoded: string): { [key: string]: string } => {
         }
       }
     } else {
-      details[key] = String(val);
+      details[key] = makePrintVal(val);
 
       if (key in dividers) {
         const { divider, keys } = dividers[key];
@@ -99,7 +103,7 @@ const parseSensorDetails = (decoded: string): { [key: string]: string } => {
         val.split(divider).forEach((v: string, i: number) => {
           const dividerKey = keys.find((k) => k.index === i);
           if (dividerKey) {
-            details[`${key}.${dividerKey.key}`] = String(v);
+            details[`${key}.${dividerKey.key}`] = makePrintVal(v);
           }
         });
       }
